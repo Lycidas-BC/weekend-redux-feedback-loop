@@ -24,17 +24,18 @@ Reflection/feedback to-do
 [X] create table
     [ ] STRETCH: check if table exists, if not run create statement??
 [X] put some sample data in db
-[ ] server-side routes:
-    [ ] POST
-        [ ] insert to table
+[X] server-side routes:
+    [ ] '/api/feedback'
+    [X] POST
+        [X] insert to table
         [ ] STRETCH: make db
         [ ] STRETCH: make table
-    [ ] GET
-        [ ] pull data from table
+    [X] GET
+        [X] pull data from table
         [ ] STRETCH: check if db exists
         [ ] STRETCH: check if table exists
-    [ ] DELETE
-    [ ] PUT
+    [X] DELETE
+    [X] PUT
 [ ] client-side axios routes:
     [ ] POST
         [ ] insert to table
