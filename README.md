@@ -50,22 +50,22 @@ Reflection/feedback to-do
 [ ] create a multi-part form
     [ ] create components directly in master; hammer out component contents in branches
     [ ] Next/Submit buttons call function with useHistory to skip to the next screen
-    [ ] Screen A: feelings
+    [X] Screen A: feelings
         [ ] tell the user to enter a number 1-5
         [ ] check to make sure they entered a number
-    [ ] Screen B: understanding
+    [X] Screen B: understanding
         [ ] tell the user to enter a number 1-5
         [ ] check to make sure they entered a number
-    [ ] Screen C: support
+    [X] Screen C: support
         [ ] tell the user to enter a number 1-5
         [ ] check to make sure they entered a number
-    [ ] Screen D: comments
+    [X] Screen D: comments
         [ ] tell the user to enter comment of a certain length
         [ ] optional
-    [ ] Screen E: confirmation before submitting
+    [X] Screen E: confirmation before submitting
         [ ] conditional render: gray out submit button if missing required info - incomplete
         [ ] navigate to previous screens to edit info
-    [ ] Screen F: admin - list all feedback
+    [X] Screen F: admin - list all feedback
         [ ] most recent first
         [ ] DELETE with confirmation
 [ ] STRETCH:
