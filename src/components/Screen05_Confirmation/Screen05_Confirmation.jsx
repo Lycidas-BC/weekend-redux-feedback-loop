@@ -1,17 +1,37 @@
 import "./Screen05_Confirmation.css";
 import React from "react";
+import axios from 'axios';
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { HashRouter as Router, Route, Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 function Screen05_Confirmation() {
   const history = useHistory();
-  // const dispatch = useDispatch();
+  //grab variables from store
+  const feelings = useSelector((store) => store.feelings);
+  const understanding = useSelector((store) => store.understanding);
+  const support = useSelector((store) => store.support);
+  const comments = useSelector((store) => store.comments);
+  
 
   const handleSubmit = () => {
-
-    // axios
+    axios({
+      method: "POST",
+      url: "/api/feedback",
+      data: {
+        feeling: feelings,
+        understanding: understanding,
+        support: support,
+        comment: comments
+      },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log("this is a Post error", err);
+      });
     history.push('/');
   }
   

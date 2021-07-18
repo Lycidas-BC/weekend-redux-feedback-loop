@@ -2,21 +2,21 @@ import "./Screen04_Comments.css";
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { HashRouter as Router, Route, Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 function Screen04_Comments() {
   const history = useHistory();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [commentsInput, setCommentsInput] = useState("");
 
   const handleSubmit = () =>{
     // event.preventDefault();
 
-    // dispatch({
-    //   type: "CUSTOMER_INFO",
-    //   payload: customerFormInfo,
-    // });
+    dispatch({
+      type: "comments",
+      payload: commentsInput,
+    });
     history.push('/screen5_confirmation');
   } //end handleSubmit
 
@@ -29,11 +29,12 @@ function Screen04_Comments() {
         <form onSubmit={handleSubmit}>
           <div><label>Any comments you want to leave?</label></div>
           <div>
-            <input
+            <textarea
+              className={"input"}
               placeholder="Let us know your thoughts"
               value={commentsInput}
               onChange={(evt) => setCommentsInput(evt.target.value)}
-            />
+            ></textarea>
           </div>
           <button type="submit" value="submit">
             NEXT
