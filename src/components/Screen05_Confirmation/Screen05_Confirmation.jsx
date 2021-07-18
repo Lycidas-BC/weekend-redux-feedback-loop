@@ -1,7 +1,6 @@
 import "./Screen05_Confirmation.css";
 import React from "react";
 import axios from 'axios';
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 
@@ -86,9 +85,21 @@ function Screen05_Confirmation() {
 
   return (
       <div>
-        <h1><img src = {'images/goat_small.jpg'}></img> confirmation <img src = {'images/goat_small.jpg'}></img></h1>
+        <h1><img src = {'images/goat_small.jpg'} alt="goat"></img> confirmation <img src = {'images/goat_small.jpg'} alt="goat"></img></h1>
         <form onSubmit={handleSubmit}>
-        <div className="inlineButtons">
+          <p>
+            Feelings: {feelings}
+          </p>
+          <p>
+            Understanding: {understanding}
+          </p>
+          <p>
+            Support: {support}
+          </p>
+          <p>
+            Comments: {comments}
+          </p>
+         <div className="inlineButtons">
             <button type="button" onClick={(evt) => handlePrevious()}>
               PREVIOUS
             </button>

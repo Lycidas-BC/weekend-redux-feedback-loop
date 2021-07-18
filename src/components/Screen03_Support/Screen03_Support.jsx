@@ -49,7 +49,7 @@ function Screen03_Support() {
   return (
       <div>
         <section>
-          <h1><img src = {'images/goat_small.jpg'}></img> Support <img src = {'images/goat_small.jpg'}></img></h1>
+          <h1><img src = {'images/goat_small.jpg'} alt="goat"></img> Support <img src = {'images/goat_small.jpg'} alt="goat"></img></h1>
         </section>
         <section>
         <form onSubmit={handleSubmit}>
