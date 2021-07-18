@@ -8,39 +8,43 @@ import { useHistory } from 'react-router-dom';
 function Screen03_Support() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [supportInput, setSupportInput] = useState("");
-  const [validInput, setValidInput] = useState(false);
-
-
-  const handleInput = (eventType, support) => {
-    // make sure key press wasn't a backspace
-    if (eventType.toLowerCase().search("delete") >=0 ){
-      setSupportInput("");
-    } else {
-      // make sure input is a number
-      if (!isNaN(support) && !isNaN(parseFloat(support))) {
-        if (Number(support) >= 0 && Number(support) <= 5) {
-          setSupportInput(support);
-        } else {
-          setValidInput(false);
-          alert("Please make sure your number is in range.");
-        }
+  const supportDefault = useSelector((store) => store.support);
+  const [supportInput, setSupportInput] = useState(supportDefault.length === 0 ? "" : supportDefault);
+  
+  const validateInput = (input) => {
+    if (!isNaN(input) && !isNaN(parseFloat(input))) {
+      if (Number(input) >= 0 && Number(input) <= 5) {
+        return "valid";
       } else {
-        setValidInput(false);
-        alert("Please enter a number.");
-      }
+        return "Number out of range.";
     }
-  } //end handleInput
+   } else {
+      return "Not a Number.";
+    }
+  } //end validateInput
 
   const handleSubmit = () =>{
     // event.preventDefault();
+    const isValid = validateInput(supportInput);
 
+    if (isValid === "valid") {
+      dispatch({
+        type: "support",
+        payload: supportInput,
+      });
+      history.push('/screen4_comments');
+    } else {
+      alert(isValid);
+    }
+  } //end handleSubmit
+
+  const handlePrevious = () => {
     dispatch({
       type: "support",
       payload: supportInput,
     });
-    history.push('/screen4_comments');
-  } //end handleSubmit
+    history.push('/screen2_understanding');
+  } //end handlePrevious
 
   return (
       <div>
@@ -54,12 +58,19 @@ function Screen03_Support() {
             <input
               placeholder="Enter a number up to 5"
               value={supportInput}
-              onChange={(evt) => handleInput(evt.nativeEvent.inputType, evt.target.value)}
+              onChange={(evt) => setSupportInput(evt.target.value)}
             />
           </div>
-          <button type="submit" value="submit">
-            NEXT
-          </button>
+          <div className="inlineButtons">
+            <button type="button" onClick={(evt) => handlePrevious()}>
+              PREVIOUS
+            </button>
+          </div>
+          <div className="inlineButtons">
+            <button type="submit" value="submit">
+              NEXT
+            </button>
+          </div>
         </form>
         </section>
       </div>

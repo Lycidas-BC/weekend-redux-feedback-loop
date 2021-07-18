@@ -8,44 +8,43 @@ import { useHistory } from 'react-router-dom';
 function Screen02_Understanding() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [understandingInput, setUnderstandingInput] = useState("");
-  const [validInput, setValidInput] = useState(false);
+  const understandingDefault = useSelector((store) => store.understanding);
+  const [understandingInput, setUnderstandingInput] = useState(understandingDefault.length === 0 ? "" : understandingDefault);
 
-
-  const handleInput = (eventType, understanding) => {
-    // make sure key press wasn't a backspace
-    if (eventType.toLowerCase().search("delete") >=0 ){
-      setUnderstandingInput("");
-    } else {
-      // make sure input is a number
-      if (!isNaN(understanding) && !isNaN(parseFloat(understanding))) {
-        if (Number(understanding) >= 0 && Number(understanding) <= 5) {
-          setUnderstandingInput(understanding);
-          setValidInput(true);
-        } else {
-          setValidInput(false);
-          alert("Please make sure your number is in range.");
-        }
+  const validateInput = (input) => {
+    if (!isNaN(input) && !isNaN(parseFloat(input))) {
+      if (Number(input) >= 0 && Number(input) <= 5) {
+        return "valid";
       } else {
-        setValidInput(false);
-        alert("Please enter a number.");
-      }
+        return "Number out of range.";
     }
-  } //end handleInput
+   } else {
+      return "Not a Number.";
+    }
+  } //end validateInput
 
-  const handleSubmit = () =>{
+  const handleSubmit = () => {
     // event.preventDefault();
+    const isValid = validateInput(understandingInput);
 
-    if (validInput) {
+    if (isValid === "valid") {
       dispatch({
         type: "understanding",
         payload: understandingInput,
       });
       history.push('/screen3_support');
     } else {
-      alert("Understanding is a required field.")
+      alert(isValid);
     }
   } //end handleSubmit
+
+  const handlePrevious = () => {
+    dispatch({
+      type: "understanding",
+      payload: understandingInput,
+    });
+    history.push('/');
+  } //end handlePrevious
 
   return (
       <div>
@@ -59,12 +58,19 @@ function Screen02_Understanding() {
             <input
               placeholder="Enter a number up to 5"
               value={understandingInput}
-              onChange={(evt) => handleInput(evt.nativeEvent.inputType, evt.target.value)}
+              onChange={(evt) => setUnderstandingInput(evt.target.value)}
             />
           </div>
-          <button type="submit" value="submit">
-            NEXT
-          </button>
+          <div className="inlineButtons">
+            <button type="button" onClick={(evt) => handlePrevious()}>
+              PREVIOUS
+            </button>
+          </div>
+          <div className="inlineButtons">
+            <button type="submit" value="submit">
+              NEXT
+            </button>
+          </div>
         </form>
         </section>
       </div>
