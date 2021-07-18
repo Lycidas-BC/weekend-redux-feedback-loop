@@ -20,7 +20,7 @@ function Screen05_Confirmation() {
         <h1><img src = {'images/goat_small.jpg'}></img> confirmation <img src = {'images/goat_small.jpg'}></img></h1>
         <form onSubmit={handleSubmit}>
           <button type="submit" value="submit">
-            NEXT
+            Submit
           </button>
         </form>
       </div>
