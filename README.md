@@ -36,7 +36,7 @@ Reflection/feedback to-do
         [ ] STRETCH: check if table exists
     [X] DELETE
     [X] PUT
-[ ] client-side axios routes:
+[X] client-side axios routes:
     [X] POST
         [X] insert to table
         [ ] STRETCH: make db
@@ -64,10 +64,12 @@ Reflection/feedback to-do
         [X] tell the user to enter comment of a certain length
         [X] optional
     [X] Screen E: confirmation before submitting
-        [ ] navigate to previous screens to edit info
+        [X] navigate to previous screens to edit info
     [X] Screen F: admin - list all feedback
-        [ ] most recent first
-        [ ] DELETE with confirmation
+        [X] most recent first
+        [X] DELETE
+            [ ] with confirmation
+    [ ] STOP USING alert! It refreshes your screen, emptying the stores!!!!!!
 [ ] STRETCH:
     [ ] styling - material-UI
         [ ] cards, snackbars, buttons, a nav bar, icons, and/or a theme. 

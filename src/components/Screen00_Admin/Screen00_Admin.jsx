@@ -2,8 +2,6 @@ import "./Screen00_Admin.css";
 import React from "react";
 import axios from 'axios';
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 
 function Screen00_Admin() {
@@ -57,13 +55,13 @@ function Screen00_Admin() {
        <tbody>
            {feedbackList.map((feedback, index) =>
         <tr key={index}>
-        <td>{feedback.feeling}</td>
-        <td>{feedback.understanding}</td>
-        <td>{feedback.support}</td>
-        <td>{feedback.comments}</td>
-        <td>
-          <button onClick={() => deleteFeedbackItem(feedback.id)}>Delete</button>
-        </td>
+          <td>{feedback.feeling}</td>
+          <td>{feedback.understanding}</td>
+          <td>{feedback.support}</td>
+          <td>{feedback.comments}</td>
+          <td>
+            <button onClick={() => deleteFeedbackItem(feedback.id)}>Delete</button>
+          </td>
         </tr>
         )}
         </tbody>

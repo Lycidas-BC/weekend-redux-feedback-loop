@@ -42,7 +42,7 @@ function Screen01_Feelings() {
   return (
       <div>
         <section>
-          <h1><img src = {'images/goat_small.jpg'}></img>  Feedback <img src = {'images/goat_small.jpg'}></img></h1>
+          <h1><img src = {'images/goat_small.jpg'} alt="goat"></img>  Feedback <img src = {'images/goat_small.jpg'} alt="goat"></img></h1>
         </section>
         <section>
         <form onSubmit={handleSubmit}>

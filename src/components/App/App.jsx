@@ -17,26 +17,26 @@ function App() {
           <h1 className='App-title'>Feedback!</h1>
           <h4>Don't forget it!</h4>
         </header>
-        <body>
-          <Route path="/admin" exact>
-            <Screen00Admin />
-          </Route>
-          <Route path="/" exact>
-            <Screen01Feelings />
-          </Route>
-          <Route path="/screen2_understanding" exact>
-            <Screen02Understanding />
-          </Route>
-          <Route path="/screen3_support" exact>
-            <Screen03Support />
-          </Route>
-          <Route path="/screen4_comments" exact>
-            <Screen04Comments />
-          </Route>
-          <Route path="/screen5_confirmation" exact>
-            <Screen05Confirmation />
-          </Route>
-        </body>
+          <section>
+            <Route path="/admin" exact>
+              <Screen00Admin />
+            </Route>
+            <Route path="/" exact>
+              <Screen01Feelings />
+            </Route>
+            <Route path="/screen2_understanding" exact>
+              <Screen02Understanding />
+            </Route>
+            <Route path="/screen3_support" exact>
+              <Screen03Support />
+            </Route>
+            <Route path="/screen4_comments" exact>
+              <Screen04Comments />
+            </Route>
+            <Route path="/screen5_confirmation" exact>
+              <Screen05Confirmation />
+            </Route>
+          </section>
       </div>
     </Router>
   );
