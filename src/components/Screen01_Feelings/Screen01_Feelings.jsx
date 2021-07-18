@@ -8,43 +8,34 @@ import { useHistory } from 'react-router-dom';
 function Screen01_Feelings() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [feelingInput, setFeelingInput] = useState("");
-  const [validInput, setValidInput] = useState(false);
-
+  const feelingsDefault = useSelector((store) => store.feelings);
+  const [feelingInput, setFeelingInput] = useState(feelingsDefault.length === 0 ? "" : feelingsDefault);
 
   //Can I borrow a feeling?
-  const handleInput = (eventType, feeling) => {
-    // make sure key press wasn't a backspace
-    if (eventType.toLowerCase().search("delete") >=0 ){
-      setFeelingInput("");
-    } else {
-      // make sure input is a number
-      if (!isNaN(feeling) && !isNaN(parseFloat(feeling))) {
-        if (Number(feeling) >= 0 && Number(feeling) <= 5) {
-          setFeelingInput(feeling);
-          setValidInput(true);
-        } else {
-          setValidInput(false);
-          alert("Please make sure your number is in range.");
-        }
+  const validateInput = (input) => {
+    if (!isNaN(input) && !isNaN(parseFloat(input))) {
+      if (Number(input) >= 0 && Number(input) <= 5) {
+        return "valid";
       } else {
-        setValidInput(false);
-        alert("Please enter a number.");
-      }
+        return "Number out of range.";
     }
-  } //end handleInput
+   } else {
+      return "Not a Number.";
+    }
+  } //end validateInput
 
   const handleSubmit = () =>{
     // event.preventDefault();
+    const isValid = validateInput(feelingInput);
 
-    if (validInput) {
+    if (isValid === "valid") {
       dispatch({
         type: "feelings",
         payload: feelingInput,
       });
       history.push('/screen2_understanding');
     } else {
-      alert("Feelings invalid. Try again.")
+      alert(`Feelings invalid. ${isValid} Try again.`);
     }
   } //end handleSubmit
 
@@ -60,7 +51,7 @@ function Screen01_Feelings() {
             <input
               placeholder="Enter a number up to 5"
               value={feelingInput}
-              onChange={(evt) => handleInput(evt.nativeEvent.inputType, evt.target.value)}
+              onChange={(evt) => setFeelingInput(evt.target.value)}
             />
           </div>
           <button type="submit" value="submit">

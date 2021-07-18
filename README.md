@@ -25,7 +25,7 @@ Reflection/feedback to-do
     [ ] STRETCH: check if table exists, if not run create statement??
 [X] put some sample data in db
 [X] server-side routes:
-    [ ] '/api/feedback'
+    [X] '/api/feedback'
     [X] POST
         [X] insert to table
         [ ] STRETCH: make db
@@ -37,19 +37,19 @@ Reflection/feedback to-do
     [X] DELETE
     [X] PUT
 [ ] client-side axios routes:
-    [ ] POST
-        [ ] insert to table
+    [X] POST
+        [X] insert to table
         [ ] STRETCH: make db
         [ ] STRETCH: make table
-    [ ] GET
-        [ ] pull data from table
-            [ ] use redux to store data across views
+    [X] GET
+        [X] pull data from table
+            [X] use redux to store data across views
         [ ] STRETCH: check if db exists
         [ ] STRETCH: check if table exists
-    [ ] DELETE
+    [X] DELETE
     [ ] PUT
-[ ] create a multi-part form
-    [ ] create components directly in master; hammer out component contents in branches
+[X] create a multi-part form
+    [X] create components directly in master; hammer out component contents in branches
     [X] Next/Submit buttons call function with useHistory to skip to the next screen
     [X] Screen A: feelings
         [X] tell the user to enter a number 1-5
@@ -64,7 +64,6 @@ Reflection/feedback to-do
         [X] tell the user to enter comment of a certain length
         [X] optional
     [X] Screen E: confirmation before submitting
-        [ ] conditional render: gray out submit button if missing required info - incomplete
         [ ] navigate to previous screens to edit info
     [X] Screen F: admin - list all feedback
         [ ] most recent first

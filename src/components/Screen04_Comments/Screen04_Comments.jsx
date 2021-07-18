@@ -8,17 +8,25 @@ import { useHistory } from 'react-router-dom';
 function Screen04_Comments() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [commentsInput, setCommentsInput] = useState("");
+  const commentsDefault = useSelector((store) => store.comments);
+  const [commentsInput, setCommentsInput] = useState(commentsDefault.length === 0 ? "" : commentsDefault);
 
   const handleSubmit = () =>{
     // event.preventDefault();
-
     dispatch({
       type: "comments",
       payload: commentsInput,
     });
     history.push('/screen5_confirmation');
   } //end handleSubmit
+
+  const handlePrevious = () => {
+    dispatch({
+      type: "comments",
+      payload: commentsInput,
+    });
+    history.push('/screen3_support');
+  } //end handlePrevious
 
   return (
       <div>
@@ -36,9 +44,16 @@ function Screen04_Comments() {
               onChange={(evt) => setCommentsInput(evt.target.value)}
             ></textarea>
           </div>
-          <button type="submit" value="submit">
-            NEXT
-          </button>
+          <div className="inlineButtons">
+            <button type="button" onClick={(evt) => handlePrevious()}>
+              PREVIOUS
+            </button>
+          </div>
+          <div className="inlineButtons">
+            <button type="submit" value="submit">
+              NEXT
+            </button>
+          </div>
         </form>
         </section>
       </div>
