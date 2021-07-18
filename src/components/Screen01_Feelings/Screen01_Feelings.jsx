@@ -2,10 +2,12 @@ import "./Screen01_Feelings.css";
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link, useHistory } from 'react-router-dom';
 
 
 function Screen01_Feelings() {
+  const history = useHistory();
+  // const dispatch = useDispatch();
   const [feelingInput, setFeelingInput] = useState("");
   const [validInput, setValidInput] = useState(false);
 
@@ -27,7 +29,13 @@ function Screen01_Feelings() {
   }
 
   const handleSubmit = () =>{
+    // event.preventDefault();
 
+    // dispatch({
+    //   type: "CUSTOMER_INFO",
+    //   payload: customerFormInfo,
+    // });
+    history.push('/screen2_understanding');
   } //end handleSubmit
 
   return (
