@@ -2,14 +2,22 @@ import "./Screen04_Comments.css";
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link, useHistory } from 'react-router-dom';
 
 
 function Screen04_Comments() {
+  const history = useHistory();
+  // const dispatch = useDispatch();
   const [commentsInput, setCommentsInput] = useState("");
 
   const handleSubmit = () =>{
+    // event.preventDefault();
 
+    // dispatch({
+    //   type: "CUSTOMER_INFO",
+    //   payload: customerFormInfo,
+    // });
+    history.push('/screen5_confirmation');
   } //end handleSubmit
 
   return (

@@ -2,10 +2,12 @@ import "./Screen02_Understanding.css";
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link, useHistory } from 'react-router-dom';
 
 
 function Screen02_Understanding() {
+  const history = useHistory();
+  // const dispatch = useDispatch();
   const [understandingInput, setUnderstandingInput] = useState("");
   const [validInput, setValidInput] = useState(false);
 
@@ -26,7 +28,13 @@ function Screen02_Understanding() {
   } //end handleInput
 
   const handleSubmit = () =>{
+    // event.preventDefault();
 
+    // dispatch({
+    //   type: "CUSTOMER_INFO",
+    //   payload: customerFormInfo,
+    // });
+    history.push('/screen3_support');
   } //end handleSubmit
 
   return (

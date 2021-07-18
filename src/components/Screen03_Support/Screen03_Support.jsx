@@ -2,10 +2,12 @@ import "./Screen03_Support.css";
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link, useHistory } from 'react-router-dom';
 
 
 function Screen03_Support() {
+  const history = useHistory();
+  // const dispatch = useDispatch();
   const [supportInput, setSupportInput] = useState("");
   const [validInput, setValidInput] = useState(false);
 
@@ -26,7 +28,13 @@ function Screen03_Support() {
   } //end handleInput
 
   const handleSubmit = () =>{
+    // event.preventDefault();
 
+    // dispatch({
+    //   type: "CUSTOMER_INFO",
+    //   payload: customerFormInfo,
+    // });
+    history.push('/screen4_comments');
   } //end handleSubmit
 
   return (
