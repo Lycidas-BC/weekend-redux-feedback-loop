@@ -23,6 +23,29 @@ function Screen02_Understanding() {
     history.push('/screen3_support');
   } //end handleSubmit
 
+  const marks = [
+    {
+      value: 0,
+      label: `very confused`,
+    },
+    {
+      value: 25,
+      label: `confused`,
+    },
+    {
+      value: 50,
+      label: `getting there`,
+    },
+    {
+      value: 75,
+      label: `I got this!`,
+    },
+    {
+      value: 100,
+      label: `I could teach it!`,
+    }
+  ];
+
   const handlePrevious = () => {
     dispatch({
       type: "understanding",
@@ -41,6 +64,7 @@ function Screen02_Understanding() {
           <div><label>How are you understanding the content today?</label></div>
           <div>
             <DiscreteSlider 
+              marks = {marks}
               sliderValue = {understandingInput}
               setSliderValue = {setUnderstandingInput}
               >

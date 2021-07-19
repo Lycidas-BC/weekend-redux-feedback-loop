@@ -1,5 +1,6 @@
 
 function sliderLabel(value) {
+  value = Number(value);
     return (
       value === 0 ? "💀" :
       value === 1 ? "🤮" :
