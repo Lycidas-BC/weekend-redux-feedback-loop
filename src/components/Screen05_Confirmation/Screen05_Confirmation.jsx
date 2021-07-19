@@ -30,7 +30,8 @@ function Screen05_Confirmation() {
     }
   } //end validateInput
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     const feelingsValid = validateInput(feelings);
     const understandingValid = validateInput(understanding);
