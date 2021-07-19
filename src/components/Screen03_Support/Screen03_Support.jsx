@@ -9,7 +9,10 @@ import { useHistory } from 'react-router-dom';
 function Screen03_Support() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const supportDefault = useSelector((store) => store.support);
+  let supportDefault = useSelector((store) => store.support);
+  if (supportDefault === null) {
+    supportDefault = 50;
+  }
   const [supportInput, setSupportInput] = useState(supportDefault.length === 0 ? 50 : supportDefault);
   
   const handleSubmit = () =>{

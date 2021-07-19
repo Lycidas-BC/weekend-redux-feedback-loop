@@ -9,7 +9,11 @@ import { useHistory } from 'react-router-dom';
 function Screen01_Feelings() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const feelingsDefault = useSelector((store) => store.feelings);
+  let feelingsDefault = useSelector((store) => store.feelings);
+  if (feelingsDefault === null) {
+    //sometimes, the slider doesn't catch the input and returns null - if this happens, set it to default value
+    feelingsDefault = 50;
+  }
   const [feelingInput, setFeelingInput] = useState(feelingsDefault.length === 0 ? 50 : feelingsDefault);
 
   //Can I borrow a feeling?

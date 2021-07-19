@@ -9,7 +9,10 @@ import { useHistory } from 'react-router-dom';
 function Screen02_Understanding() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const understandingDefault = useSelector((store) => store.understanding);
+  let understandingDefault = useSelector((store) => store.understanding);
+  if (understandingDefault === null) {
+    understandingDefault = 50;
+  }
   const [understandingInput, setUnderstandingInput] = useState(understandingDefault.length === 0 ? 50 : understandingDefault);
 
   const handleSubmit = () => {

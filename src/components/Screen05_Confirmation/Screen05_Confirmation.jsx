@@ -72,8 +72,8 @@ function Screen05_Confirmation() {
         type: "comments",
         payload: "",
       });
-      //return to home screen
-      history.push('/');
+      //go to thank you screen
+      history.push('/screen6_thankyou');
     } else {
       //Not sure it's possible to end up in this case, but just to be safe
       setValidInputs(`
