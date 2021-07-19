@@ -10,7 +10,7 @@ function Screen03_Support() {
   const history = useHistory();
   const dispatch = useDispatch();
   const supportDefault = useSelector((store) => store.support);
-  const [supportInput, setSupportInput] = useState(supportDefault.length === 0 ? "" : supportDefault);
+  const [supportInput, setSupportInput] = useState(supportDefault.length === 0 ? 50 : supportDefault);
   
   const handleSubmit = () =>{
     dispatch({

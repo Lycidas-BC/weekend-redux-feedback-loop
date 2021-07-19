@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
+import sliderLabel from '../sliderLabel/sliderLabel';
 
 
 function Screen05_Confirmation() {
@@ -93,13 +94,13 @@ function Screen05_Confirmation() {
         <h1><img src = {'images/goat_small.jpg'} alt="goat"></img> confirmation <img src = {'images/goat_small.jpg'} alt="goat"></img></h1>
         <form onSubmit={handleSubmit}>
           <p>
-            Feelings: {feelings}
+            Feelings: {`${sliderLabel(feelings)} (${feelings})`} 
           </p>
           <p>
-            Understanding: {understanding}
+            Understanding: {`${sliderLabel(understanding)} (${understanding})`}
           </p>
           <p>
-            Support: {support}
+            Support: {`${sliderLabel(support)} (${support})`}
           </p>
           <p>
             Comments: {comments}
