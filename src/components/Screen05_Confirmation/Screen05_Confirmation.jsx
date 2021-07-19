@@ -1,6 +1,7 @@
 import "./Screen05_Confirmation.css";
 import React from "react";
 import axios from 'axios';
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 
@@ -13,10 +14,12 @@ function Screen05_Confirmation() {
   const understanding = useSelector((store) => store.understanding);
   const support = useSelector((store) => store.support);
   const comments = useSelector((store) => store.comments);
+  const [validInputs, setValidInputs] = useState("");
+
   
   const validateInput = (input) => {
     if (!isNaN(input) && !isNaN(parseFloat(input))) {
-      if (Number(input) >= 0 && Number(input) <= 5) {
+      if (Number(input) >= 0 && Number(input) <= 100) {
         return "valid";
       } else {
         return "Number out of range.";
@@ -34,6 +37,7 @@ function Screen05_Confirmation() {
 
     if (feelingsValid === "valid" && understandingValid === "valid" && supportValid === "valid") {
       //add to db
+      console.log('feelings:', feelings, 'understanding:', understanding, 'support:', support, 'comment:', comments);
       axios({
         method: "POST",
         url: "/api/feedback",
@@ -70,7 +74,8 @@ function Screen05_Confirmation() {
       //return to home screen
       history.push('/');
     } else {
-      alert(`
+      //Not sure it's possible to end up in this case, but just to be safe
+      setValidInputs(`
       feelings: ${feelingsValid}
       understanding: ${understandingValid}
       support: ${supportValid}
@@ -108,6 +113,7 @@ function Screen05_Confirmation() {
             Submit
           </button>
         </form>
+        <h5 className="validityWarning">{validInputs}</h5>
       </div>
   );
 }

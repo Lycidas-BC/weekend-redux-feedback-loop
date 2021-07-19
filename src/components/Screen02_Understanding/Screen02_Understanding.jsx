@@ -1,4 +1,5 @@
 import "./Screen02_Understanding.css";
+import DiscreteSlider from "../Slider/Slider";
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,33 +10,14 @@ function Screen02_Understanding() {
   const history = useHistory();
   const dispatch = useDispatch();
   const understandingDefault = useSelector((store) => store.understanding);
-  const [understandingInput, setUnderstandingInput] = useState(understandingDefault.length === 0 ? "" : understandingDefault);
-
-  const validateInput = (input) => {
-    if (!isNaN(input) && !isNaN(parseFloat(input))) {
-      if (Number(input) >= 0 && Number(input) <= 5) {
-        return "valid";
-      } else {
-        return "Number out of range.";
-    }
-   } else {
-      return "Not a Number.";
-    }
-  } //end validateInput
+  const [understandingInput, setUnderstandingInput] = useState(understandingDefault.length === 0 ? 50 : understandingDefault);
 
   const handleSubmit = () => {
-    // event.preventDefault();
-    const isValid = validateInput(understandingInput);
-
-    if (isValid === "valid") {
-      dispatch({
-        type: "understanding",
-        payload: understandingInput,
-      });
-      history.push('/screen3_support');
-    } else {
-      alert(isValid);
-    }
+    dispatch({
+      type: "understanding",
+      payload: understandingInput,
+    });
+    history.push('/screen3_support');
   } //end handleSubmit
 
   const handlePrevious = () => {
@@ -55,11 +37,11 @@ function Screen02_Understanding() {
         <form onSubmit={handleSubmit}>
           <div><label>How are you understanding the content today?</label></div>
           <div>
-            <input
-              placeholder="Enter a number up to 5"
-              value={understandingInput}
-              onChange={(evt) => setUnderstandingInput(evt.target.value)}
-            />
+            <DiscreteSlider 
+              sliderValue = {understandingInput}
+              setSliderValue = {setUnderstandingInput}
+              >
+            </DiscreteSlider>
           </div>
           <div className="inlineButtons">
             <button type="button" onClick={(evt) => handlePrevious()}>
@@ -70,7 +52,7 @@ function Screen02_Understanding() {
             <button type="submit" value="submit">
               NEXT
             </button>
-          </div>
+        </div>
         </form>
         </section>
       </div>
