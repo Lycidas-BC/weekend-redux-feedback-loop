@@ -7,6 +7,7 @@ import Screen02Understanding from "../Screen02_Understanding/Screen02_Understand
 import Screen03Support from "../Screen03_Support/Screen03_Support";
 import Screen04Comments from "../Screen04_Comments/Screen04_Comments";
 import Screen05Confirmation from "../Screen05_Confirmation/Screen05_Confirmation";
+import Screen06ThankYou from "../Screen06_ThankYou/Screen06_ThankYou";
 
 function App() {
 
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route path="/screen5_confirmation" exact>
               <Screen05Confirmation />
+            </Route>
+            <Route path="/screen6_thankyou" exact>
+              <Screen06ThankYou />
             </Route>
           </section>
       </div>

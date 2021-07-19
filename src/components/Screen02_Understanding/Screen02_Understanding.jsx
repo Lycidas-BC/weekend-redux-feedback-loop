@@ -9,7 +9,10 @@ import { useHistory } from 'react-router-dom';
 function Screen02_Understanding() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const understandingDefault = useSelector((store) => store.understanding);
+  let understandingDefault = useSelector((store) => store.understanding);
+  if (understandingDefault === null) {
+    understandingDefault = 50;
+  }
   const [understandingInput, setUnderstandingInput] = useState(understandingDefault.length === 0 ? 50 : understandingDefault);
 
   const handleSubmit = () => {
@@ -19,6 +22,29 @@ function Screen02_Understanding() {
     });
     history.push('/screen3_support');
   } //end handleSubmit
+
+  const marks = [
+    {
+      value: 0,
+      label: `very confused`,
+    },
+    {
+      value: 25,
+      label: `confused`,
+    },
+    {
+      value: 50,
+      label: `getting there`,
+    },
+    {
+      value: 75,
+      label: `I got this!`,
+    },
+    {
+      value: 100,
+      label: `I could teach it!`,
+    }
+  ];
 
   const handlePrevious = () => {
     dispatch({
@@ -38,6 +64,7 @@ function Screen02_Understanding() {
           <div><label>How are you understanding the content today?</label></div>
           <div>
             <DiscreteSlider 
+              marks = {marks}
               sliderValue = {understandingInput}
               setSliderValue = {setUnderstandingInput}
               >

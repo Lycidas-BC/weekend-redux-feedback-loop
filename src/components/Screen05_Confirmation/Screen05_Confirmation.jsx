@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
+import sliderLabel from '../sliderLabel/sliderLabel';
 
 
 function Screen05_Confirmation() {
@@ -29,7 +30,8 @@ function Screen05_Confirmation() {
     }
   } //end validateInput
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     const feelingsValid = validateInput(feelings);
     const understandingValid = validateInput(understanding);
@@ -71,8 +73,8 @@ function Screen05_Confirmation() {
         type: "comments",
         payload: "",
       });
-      //return to home screen
-      history.push('/');
+      //go to thank you screen
+      history.push('/screen6_thankyou');
     } else {
       //Not sure it's possible to end up in this case, but just to be safe
       setValidInputs(`
@@ -93,13 +95,13 @@ function Screen05_Confirmation() {
         <h1><img src = {'images/goat_small.jpg'} alt="goat"></img> confirmation <img src = {'images/goat_small.jpg'} alt="goat"></img></h1>
         <form onSubmit={handleSubmit}>
           <p>
-            Feelings: {feelings}
+            Feelings: {`${sliderLabel(feelings)} (${feelings})`} 
           </p>
           <p>
-            Understanding: {understanding}
+            Understanding: {`${sliderLabel(understanding)} (${understanding})`}
           </p>
           <p>
-            Support: {support}
+            Support: {`${sliderLabel(support)} (${support})`}
           </p>
           <p>
             Comments: {comments}

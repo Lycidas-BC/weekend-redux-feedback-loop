@@ -9,8 +9,11 @@ import { useHistory } from 'react-router-dom';
 function Screen03_Support() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const supportDefault = useSelector((store) => store.support);
-  const [supportInput, setSupportInput] = useState(supportDefault.length === 0 ? "" : supportDefault);
+  let supportDefault = useSelector((store) => store.support);
+  if (supportDefault === null) {
+    supportDefault = 50;
+  }
+  const [supportInput, setSupportInput] = useState(supportDefault.length === 0 ? 50 : supportDefault);
   
   const handleSubmit = () =>{
     dispatch({
@@ -28,6 +31,29 @@ function Screen03_Support() {
     history.push('/screen2_understanding');
   } //end handlePrevious
 
+  const marks = [
+    {
+      value: 0,
+      label: `abandoned`,
+    },
+    {
+      value: 25,
+      label: `unsupported`,
+    },
+    {
+      value: 50,
+      label: `coulda been better`,
+    },
+    {
+      value: 75,
+      label: `supported`,
+    },
+    {
+      value: 100,
+      label: `above and beyond`,
+    }
+  ];
+
   return (
       <div>
         <section>
@@ -38,6 +64,7 @@ function Screen03_Support() {
           <div><label>How well are you being supported today?</label></div>
           <div>
             <DiscreteSlider 
+              marks = {marks}
               sliderValue = {supportInput}
               setSliderValue = {setSupportInput}
               >
