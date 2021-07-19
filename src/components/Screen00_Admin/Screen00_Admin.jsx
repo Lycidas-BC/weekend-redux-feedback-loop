@@ -24,6 +24,20 @@ function Screen00_Admin() {
         console.log("this is a GET error", err);
       });
   } //end getFeedback
+  
+  const flagFeedbackItem = (feedbackId) => {    
+    axios({
+      method: "PUT",
+      url: `/api/feedback/${feedbackId}`
+    })
+      .then((response) => {
+        // console.log(response.data);
+        getFeedback();
+      })
+      .catch((err) => {
+        console.log("this is a PUT error", err);
+      });
+  } //end flagFeedbackItem
 
   const deleteFeedbackItem = (feedbackId) => {    
     axios({
@@ -35,7 +49,7 @@ function Screen00_Admin() {
         getFeedback();
       })
       .catch((err) => {
-        console.log("this is a GET error", err);
+        console.log("this is a DELETE error", err);
       });
   } //end deleteFeedbackItem
 
@@ -49,6 +63,8 @@ function Screen00_Admin() {
         <th>Understanding</th>
         <th>Support</th>
         <th>Comments</th>
+        <th>Flagged</th>
+        <th>Flag item</th>
         <th>Delete</th>
         </tr>
         </thead>
@@ -59,6 +75,12 @@ function Screen00_Admin() {
           <td>{feedback.understanding}</td>
           <td>{feedback.support}</td>
           <td>{feedback.comments}</td>
+          <td>{String(feedback.flagged)}</td>
+          <td>
+            <button onClick={() => flagFeedbackItem(feedback.id)}>
+              {feedback.flagged ? "🏳️Remove Flag? 🏳️" : "🚩Flag item? 🚩"}
+            </button>
+          </td>
           <td>
             <button onClick={() => deleteFeedbackItem(feedback.id)}>Delete</button>
           </td>

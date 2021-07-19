@@ -53,7 +53,7 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
     pool.query(`
     UPDATE "feedback"
-    SET "flagged" = !"flagged"
+    SET "flagged" = NOT "flagged"
     WHERE id=$1;
     `, [req.params.id]).then((result) => {
         res.sendStatus(200);
