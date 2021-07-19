@@ -14,7 +14,7 @@ function Screen04_Comments() {
   const handleSubmit = () =>{
     // event.preventDefault();
     dispatch({
-      type: "comments",
+      type: "COMMENTS",
       payload: commentsInput,
     });
     history.push('/screen5_confirmation');

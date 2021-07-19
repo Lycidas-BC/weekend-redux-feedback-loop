@@ -12,7 +12,7 @@ import logger from "redux-logger";
 
 //feelings reducer
 const feelings = (state = [], action) => {
-    if (action.type === 'feelings') {
+    if (action.type === 'FEELINGS') {
       return action.payload;
     }
     return state;
@@ -20,7 +20,7 @@ const feelings = (state = [], action) => {
 
 //understanding reducer
 const understanding = (state = [], action) => {
-if (action.type === 'understanding') {
+if (action.type === 'UNDERSTANDING') {
     return action.payload;
 }
 return state;
@@ -28,7 +28,7 @@ return state;
 
 //support reducer
 const support = (state = [], action) => {
-if (action.type === 'support') {
+if (action.type === 'SUPPORT') {
     return action.payload;
 }
 return state;
@@ -36,7 +36,7 @@ return state;
 
 //comments reducer
 const comments = (state = [], action) => {
-if (action.type === 'comments') {
+if (action.type === 'COMMENTS') {
     return action.payload;
 }
 return state;

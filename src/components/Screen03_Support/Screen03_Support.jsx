@@ -25,7 +25,7 @@ function Screen03_Support() {
 
   const handlePrevious = () => {
     dispatch({
-      type: "support",
+      type: "SUPPORT",
       payload: supportInput,
     });
     history.push('/screen2_understanding');

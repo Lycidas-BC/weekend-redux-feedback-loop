@@ -19,7 +19,7 @@ function Screen01_Feelings() {
   //Can I borrow a feeling?
   const handleSubmit = () =>{
     dispatch({
-      type: "feelings",
+      type: "FEELINGS",
       payload: feelingInput,
     });
     history.push('/screen2_understanding');

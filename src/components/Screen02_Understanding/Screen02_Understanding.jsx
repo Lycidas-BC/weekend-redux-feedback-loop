@@ -17,7 +17,7 @@ function Screen02_Understanding() {
 
   const handleSubmit = () => {
     dispatch({
-      type: "understanding",
+      type: "UNDERSTANDING",
       payload: understandingInput,
     });
     history.push('/screen3_support');
